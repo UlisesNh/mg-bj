@@ -3,6 +3,11 @@
 let deck = [];
 const tipos = ['C', 'D', 'H', 'S'];
 const especiales = ["A", "J", "Q", "K"];
+const btnPedir = document.querySelector('#pedirCarta');
+const btnCarta = document.querySelector('#jugador-cartas');
+const puntos = document.querySelector('small');
+let puntosJugador = 0;
+
 
 const crearDeck = () => {
 
@@ -42,6 +47,18 @@ const verCarta = (carta) => {
 }
 const valor = verCarta(pedirCarta());
 console.log({valor});
+
+btnPedir.addEventListener('click', () => {
+  const carta = pedirCarta();
+  puntosJugador = puntosJugador + verCarta( carta );
+  puntos.innerText = puntosJugador;
+
+  const imgCarta = document.createElement('img');
+  imgCarta.src = `assets/cartas/${ carta }.png`;
+  imgCarta.classList.add('carta')
+  btnCarta.append (imgCarta);
+} )
+
 
 
 
